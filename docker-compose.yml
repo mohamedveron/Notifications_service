@@ -1,0 +1,48 @@
+version: '3.4'
+
+volumes:
+  db-data: {}
+
+services:
+  api:
+    build: ./api
+    depends_on:
+      - db
+    volumes:
+      - ./api:/api
+      - /api/node_modules
+    environment:
+      - ENV_SILENT
+      - HOST
+      - PORT
+      - NODE_ENV
+      - APP_KEY
+      - APP_URL
+      - DB_CONNECTION
+      - DB_HOST
+      - DB_PORT=${POSTGRES_PORT}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_DATABASE=${POSTGRES_DB}
+
+
+    ports:
+      - "${PORT}:${PORT}"
+
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+    expose:
+      - "${POSTGRES_PORT}"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8085:8080

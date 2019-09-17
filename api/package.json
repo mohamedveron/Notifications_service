@@ -1,0 +1,44 @@
+{
+  "name": "users-service",
+  "version": "4.1.0",
+  "adonis-version": "4.1.0",
+  "description": "Users Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test"
+  },
+  "keywords": [
+    "users-service"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/auth": "^3.0.7",
+    "@adonisjs/bodyparser": "^2.0.5",
+    "@adonisjs/cors": "^1.0.7",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.9",
+    "@adonisjs/ignitor": "^2.0.8",
+    "@adonisjs/lucid": "^6.1.3",
+    "@adonisjs/redis": "^2.0.7",
+    "@adonisjs/validator": "^5.0.6",
+    "adonis-swagger": "^1.2.9",
+    "authy": "^1.4.0",
+    "awesome-phonenumber": "^2.8.0",
+    "axios": "^0.18.0",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "libphonenumber-js": "^1.7.15",
+    "pg": "^7.12.1",
+    "sendgrid": "^5.2.3",
+    "twilio": "^3.34.0",
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {},
+  "autoload": {
+    "App": "./app"
+  }
+}
