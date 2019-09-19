@@ -1,5 +1,5 @@
-# users
-Users micro-service is SSO (single sign on) service 
+# notifications
+notifications service (SMS, Push notifcations) 
 
 ## Installation
 
