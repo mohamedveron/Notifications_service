@@ -21,6 +21,7 @@ class User extends Model {
    */
   notifications () {
     return this.belongsToMany('App/Models/Notification')
+                .pivotModel('App/Models/UserNotification')
   }
 }
 

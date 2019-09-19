@@ -53,6 +53,8 @@ async notify ({ request, response }) {
 
 
       });
+
+
  /* const numbers = ['+201117042116'];
   const body = 'Your new swvl promo code is 92111 enjoy!';
 
