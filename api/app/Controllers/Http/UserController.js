@@ -22,6 +22,14 @@ class UserController {
     response.status(200).send(result);
   }
 
+  async get ({ request, response }) {
+
+    console.log("hereee");
+    const result = await usersService.getAll();
+
+    response.status(200).send(result);
+  }
+
 
 }
 

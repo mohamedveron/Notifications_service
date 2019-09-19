@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,8 @@ const providers = [
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
-   path.join(__dirname, '..', 'providers', 'Queue/provider')
+  '@adonisjs/websocket/providers/WsProvider',
+   path.join(__dirname, '..', 'app/providers', 'socket/provider')
 ]
 
 /*

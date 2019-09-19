@@ -29,5 +29,6 @@ Route.group(() => {
 Route.group(() => {
 
   Route.post('/','UserController.add');
+  Route.get('/all','UserController.get');
 
 }).prefix('users')

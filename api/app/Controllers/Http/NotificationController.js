@@ -44,16 +44,16 @@ async notify ({ request, response }) {
           var type = info[2];
 
           // if client is a customer
-          if(type == 'driver'){
-            if(!driversInfo[group]){
+          if (type == 'driver') {
+            if (!driversInfo[group]) {
               driversInfo[group] = {};
             }
             driversInfo[group][id] = client;
             console.log(driversInfo);
 
             // if client is a driver
-          }else if(type == 'customer'){
-            if(!customersInfo[group]){
+          } else if (type == 'customer') {
+            if (!customersInfo[group]) {
               customersInfo[group] = {};
             }
             customersInfo[group][id] = client;
@@ -63,8 +63,8 @@ async notify ({ request, response }) {
 
 
       });
-}
 
+    }
 }
 
 module.exports = NotificationController
