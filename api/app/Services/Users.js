@@ -2,7 +2,6 @@
 
 const userModel = use('App/Models/User');
 
-
 class Users{
 
     addUser(user){

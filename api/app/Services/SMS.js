@@ -8,16 +8,16 @@ const client = require('twilio')(accountSid, authToken);
 
 class SMS{
 
-  broadCast(users, msg){
+  broadCast(user, msg){
 
-    var numbers = [];
+    var numbers = [user.phone];
     // using messaging service to make a pool for all numbers to be sent
     Promise.all(
       numbers.map(number => {
         return client.messages.create({
           to: number,
           from: TWILIO_MESSAGING_SERVICE_SID,
-          body: body
+          body: msg
         });
       })
     )

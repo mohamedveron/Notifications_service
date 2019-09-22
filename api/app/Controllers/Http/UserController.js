@@ -2,6 +2,7 @@
 
 const Users = use('App/Services/Users');
 const usersService = new Users();
+const socket = use('WSocket');
 
 
 class UserController {
@@ -17,14 +18,6 @@ class UserController {
 
     const user = request.post();
     const result = await usersService.addUser(user);
-
-    response.status(200).send(result);
-  }
-
-  async get ({ request, response }) {
-
-    console.log("hereee");
-    const result = await usersService.getUserById(1);
 
     response.status(200).send(result);
   }

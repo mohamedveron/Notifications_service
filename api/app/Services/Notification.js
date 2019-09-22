@@ -2,8 +2,13 @@
 
 const notificationModel = use('App/Models/Notification');
 const userNotificationModel = use('App/Models/UserNotification');
+const SMS = use('App/Services/SMS');
+const SMSService = new SMS();
+const Push = use('App/Services/Socket');
+const PushService = new Push();
 const Users = use('App/Services/Users');
 const usersService = new Users();
+
 
 
 class Notification{
@@ -44,6 +49,21 @@ class Notification{
 
     return await notificationModel.find(id)
 
+  }
+
+
+  async handleNotificationEvent(eventInstance){
+
+
+    const user = await usersService.getUserById(eventInstance.user_id);
+    const notification = await this.getNotificationById(eventInstance.notification_id);
+
+    // reflection for notification type to avoid if conditions
+    let NotificationsTypeMap = new Map();
+    NotificationsTypeMap.set('sms', SMSService);
+    NotificationsTypeMap.set('push', PushService);
+
+    NotificationsTypeMap.get(notification.type).broadCast(user, notification.description);
   }
 
 }

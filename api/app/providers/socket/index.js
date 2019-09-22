@@ -1,16 +1,18 @@
 'use strict'
 const WebSocket = require('ws');
 
+let _customersInfo = {};
+let _driversInfo = {};
+
 class Socket{
+
 
   constructor (Config) {
 
     this.Config = Config;
     this.wss = new WebSocket.Server({ port: 8080 });
-    this._customersInfo = {};
-    this._driversInfo = {};
 
-    wss.on('connection', function connection(client) {
+    this.wss.on('connection', function connection(client) {
 
       client.send('something');
 
@@ -23,19 +25,20 @@ class Socket{
 
         // if client is a customer
         if(type == 'driver'){
-          if(!this._driversInfo[group]){
-            this._driversInfo[group] = {};
+          if(!_driversInfo[group]){
+            _driversInfo[group] = {};
           }
-          this._driversInfo[group][id] = client;
-          console.log(this._driversInfo);
+          _driversInfo[group][id] = client;
+          console.log(_driversInfo);
 
           // if client is a driver
         }else if(type == 'customer'){
-          if(!this._customersInfo[group]){
-            this._customersInfo[group] = {};
+          console.log(_customersInfo);
+          if(!_customersInfo[group]){
+            _customersInfo[group] = {};
           }
-          this._customersInfo[group][id] = client;
-          console.log(this._customersInfo);
+          _customersInfo[group][id] = client;
+          console.log(_customersInfo);
         }
       });
 
@@ -45,12 +48,20 @@ class Socket{
   }
 
 
-  get (name) {
+  getClient (group, id) {
 
     /**
      * Return the instance back
      */
-    return this._customersInfo[name]
+    return _customersInfo[group][id];
+  }
+
+  getDriver (group, id) {
+
+    /**
+     * Return the instance back
+     */
+    return _driversInfo[group][id];
   }
 }
 
