@@ -28,6 +28,7 @@ services:
 
     ports:
       - "${PORT}:${PORT}"
+      - "23000:8080"
 
   db:
     image: postgres:11-alpine

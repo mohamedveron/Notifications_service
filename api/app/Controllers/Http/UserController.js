@@ -15,7 +15,6 @@ class UserController {
    */
   async add ({ request, response }) {
 
-    console.log("hereee");
     const user = request.post();
     const result = await usersService.addUser(user);
 
@@ -25,7 +24,7 @@ class UserController {
   async get ({ request, response }) {
 
     console.log("hereee");
-    const result = await usersService.getAll();
+    const result = await usersService.getUserById(1);
 
     response.status(200).send(result);
   }

@@ -21,8 +21,10 @@ Route.on('/').render('welcome')
 
 Route.group(() => {
 
-    Route.get('/','NotificationController.notify');
+    Route.get('/','NotificationController.fire');
     Route.post('/','NotificationController.add');
+    Route.post('/users','NotificationController.notifyUsers');
+    Route.post('/driver','NotificationController.notifyDriver');
 
   }).prefix('notification')
 

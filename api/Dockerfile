@@ -18,7 +18,6 @@ WORKDIR /api
 RUN touch .env && \
     yarn install
 
-EXPOSE 8080
 
 # Start server
 CMD adonis migration:run --force && \

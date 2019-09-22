@@ -4,6 +4,10 @@ const SMS = use('App/Services/SMS');
 const SMSService = new SMS();
 const Push = use('App/Services/Socket');
 const PushService = new Push();
+const Users = use('App/Services/Users');
+const usersService = new Users();
+const Notification = use('App/Services/Notification');
+const notificationService = new Notification();
 
 
 const WebSocket = require('ws');
@@ -12,20 +16,32 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 class NotificationController {
 
+
+  /**
+   * Add new notification.
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+  async add ({ request, response }) {
+
+    const data = request.post();
+
+
+    const result = await notificationService.addNotification(data);
+
+    response.status(200).send(result);
+  }
+
     /**
- * notify users.
+ * start the websocket server.
  *
  * @param {object} ctx
  * @param {Request} ctx.request
  * @param {Response} ctx.response
  */
-async notify ({ request, response }) {
-
-      let NotificationsTypeMap = new Map();
-      Notifications.set('sms', SMSService);
-      Notifications.set('push', PushService);
-
-      // NotificationsTypeMap[sms].broadCast(["01117042116', "01065583570]);
+async fire ({ request, response }) {
 
 
       // push notifications part
@@ -65,6 +81,43 @@ async notify ({ request, response }) {
       });
 
     }
+
+  /**
+   * notify users.
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+  async notifyUsers ({ request, response }) {
+
+    const data = request.post();
+
+    const msg = 'Your new swvl promo code is 92111 enjoy!';
+    const users = await usersService.getUsersByGroup(data.groupId);
+    console.log(users);
+
+    let NotificationsTypeMap = new Map();
+    NotificationsTypeMap.set('sms', SMSService);
+    NotificationsTypeMap.set('push', PushService);
+
+    NotificationsTypeMap.get(data.type).broadCast(users, msg);
+
+  }
+
+  /**
+   * notify driver.
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+  async notifyDriver ({ request, response }) {
+
+    const data = request.post();
+
+
+  }
 }
 
 module.exports = NotificationController

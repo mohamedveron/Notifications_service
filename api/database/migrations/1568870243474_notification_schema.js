@@ -7,7 +7,7 @@ class NotificationSchema extends Schema {
   up () {
     this.create('notifications', (table) => {
       table.increments()
-      table.string('type', 40).notNullable().unique()
+      table.string('type', 40).notNullable()
       table.string('description', 254).notNullable()
       table.timestamps()
     })

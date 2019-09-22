@@ -10,15 +10,23 @@ class Users{
       return userModel.create(user);
     }
 
-    async getAll(){
-      const user = await userModel.find(1)
+    async getUserById(id) {
 
-      const nots = await user
-        .notifications()
-        .fetch()
 
-      return nots;
+      const user = await userModel.find(id)
+
+      return user;
     }
+
+  async getUsersByGroup(groupId){
+
+    var users = await userModel.query()
+      .where({'groupId': groupId}).fetch();
+
+    return users;
+  }
+
+
 }
 
 module.exports = Users;
