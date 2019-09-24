@@ -2,6 +2,23 @@
 const Model = use('Model')
 
 
+/**
+ *  @swagger
+ *  definitions:
+ *    UserNotification:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: uint
+ *        user_id:
+ *          type: uint
+ *        notification_id:
+ *          type: uint
+ *      required:
+ *        - user_id
+ *        - notification_id
+ */
+
 class UserNotification extends Model {
   static boot () {
     super.boot()
