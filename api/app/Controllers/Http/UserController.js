@@ -2,17 +2,45 @@
 
 const Users = use('App/Services/Users');
 const usersService = new Users();
-const socket = use('WSocket');
-
 
 class UserController {
 
   /**
-   * Add new user.
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * @swagger
+   * /users/:
+   *   post:
+   *     description: Add user to the application
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: username
+   *         description: Username to use for identify user.
+   *         in: body
+   *         required: true
+   *         type: string
+   *       - name: email
+   *         description: User's email.
+   *         in: body
+   *         required: true
+   *         type: string
+   *       - name: type
+   *         description: role of user in the application.
+   *         in: body
+   *         required: true
+   *         type: string
+   *       - name: groupId
+   *         description: which group the user belong to.
+   *         in: body
+   *         required: true
+   *         type: uint
+   *       - name: phone
+   *         description: User's email.
+   *         in: body
+   *         required: true
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: user added
    */
   async add ({ request, response }) {
 

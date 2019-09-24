@@ -23,6 +23,24 @@ class Notification{
 
     const notification = await notificationModel.create(noti);
 
+    const res = await usersService.getUserByEmail(data.email);
+    const user = res.toJSON();
+      console.log("user", user[0]);
+      this.addUserNotification(user[0].id, notification.id);
+
+
+  }
+
+  async addGroupNotification(data){
+
+
+    const noti = {
+      "type": data.type,
+      "description": data.description
+    };
+
+    const notification = await notificationModel.create(noti);
+
     const res = await usersService.getUsersByGroup(data.groupId);
     const users = res.toJSON();
 

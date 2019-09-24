@@ -25,6 +25,14 @@ class Users{
     return users;
   }
 
+  async getUserByEmail(email){
+
+    var user = await userModel.query()
+      .where({'email': email}).fetch();
+
+    return user;
+  }
+
 
 }
 

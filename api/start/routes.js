@@ -16,21 +16,19 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+
 Route.on('/').render('welcome')
 
 
 Route.group(() => {
 
-    Route.get('/','NotificationController.fire');
     Route.post('/','NotificationController.add');
-    Route.post('/users','NotificationController.notifyUsers');
-    Route.post('/driver','NotificationController.notifyDriver');
+    Route.post('/group','NotificationController.addGroup');
 
   }).prefix('notification')
 
 Route.group(() => {
 
   Route.post('/','UserController.add');
-  Route.get('/all','UserController.get');
 
 }).prefix('users')
