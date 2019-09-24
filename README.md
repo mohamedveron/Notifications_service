@@ -14,6 +14,11 @@ Http server will be serving at http://localhost:3335
 
 Socket server will be serving at http://localhost:23000
 
+# Notes
+
+you have first have to register clients to the our websockets hub after running the app
+ on (ws://http://localhost:23000?groupId;userId;type);
+ 
 # Apis
 
 Open http://localhost:3335/docs/#/ to see apis throw swagger
