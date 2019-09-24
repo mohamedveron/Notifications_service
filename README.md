@@ -10,30 +10,17 @@ cp .env.dev .env
 docker-compose up -d --build
 ```
 
-Application will be run on http://localhost:3335
-Socket hub will be run at http://localhost:23000
+Http server will be serving at http://localhost:3335
+
+Socket server will be serving at http://localhost:23000
 
 # Apis
 
-1- you must start to add users first :
+Open http://localhost:3335/docs/#/ to see apis throw swagger
 
-  method: post
-  
-  body: {
-	"username": "veron",
-	"email": "veron@gmail.com",
-	"type": "customer",
-	"groupId": 4,
-	"phone": "+201068553570"	
-}
+Add group notification : http://localhost:3335/notification/group  : post
 
-2- start adding notifications events to be sends later to clients and drivers :
+Add user notification : http://localhost:3335/notification/  : post
 
-  method: post
-  
-  body: {
-	"type" : "push",
-	"description" : "Your new swvl promo code is 92111 enjoy!",
-	"groupId" : 4
-}
+Add user : http://localhost:3335/users/  : post
 
