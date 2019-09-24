@@ -16,8 +16,8 @@ Socket server will be serving at http://localhost:23000
 
 # Notes
 
-you have first have to register clients to the our websockets hub after running the app
- on (ws://http://localhost:23000?groupId;userId;type);
+you have first to register clients to the our websockets hub after running the app
+ on (ws://http://localhost:23000?groupId;userId;type); to be enable to send push notifications to this clients.
  
 # Apis
 
