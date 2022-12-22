@@ -30,7 +30,7 @@
     "awesome-phonenumber": "^2.8.0",
     "axios": "^0.21.2",
     "fs": "^0.0.1-security",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "libphonenumber-js": "^1.7.15",
     "pg": "^7.12.1",
     "sendgrid": "^5.2.3",
